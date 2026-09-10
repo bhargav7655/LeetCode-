@@ -1,22 +1,17 @@
 class Solution {
     public long countCommas(long n) {
-        long total = 0;
-        long start = 1000;
-        long commas = 1;
+        long ans = 0;
 
-        while (start <= n) {
-            long end = start * 1000 - 1;
-            long count = Math.min(n, end) - start + 1;
-            total += count * commas;
+        for (long p = 1000; p <= n; ) {
+            ans += n - p + 1;
 
-            if (start > n / 1000) {
+            if (p > n / 1000) {
                 break;
             }
 
-            start *= 1000;
-            commas++;
+            p *= 1000;
         }
 
-        return total;
+        return ans;
     }
 }
